@@ -1,6 +1,11 @@
+#!env ruby
+
 # This is a single line comment
 
-File.open('test.rb', 'w') do |f2|  
-  # use "\n" for two lines of text  
-  f2.puts "Created by Satish\nThank God!"  
-end  
+class FileOutputer
+	def self.add(input)
+		File.open("./output.txt", "w+") do |file|
+      file.puts input
+		end
+	end
+end
