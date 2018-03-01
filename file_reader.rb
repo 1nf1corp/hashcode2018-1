@@ -2,13 +2,27 @@ class FileReader
   def self.process_input(filename)
     file = File.open(filename)
 
-    results = []
+    input = {rows: nil, columns: nil, vehicles: nil, ride_count: nil, 
+      ride_bonus: nil, time: nil, cars: []}
 
+    index = 0
     file.each_line do |line|
-      results << line
+      if index > 0
+        input << line
+      else
+        line.each_char do |char|
+          unless char == "\n"
+            info.map[index - 1] << char
+            info.tomato_count += 1 if char == 'T'
+            info.mushroom_count += 1 if char == 'M'
+          end
+        end
+      end
+
+      index +=1
     end
     
-    results
+    input
   end
 end
     
