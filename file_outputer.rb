@@ -1,11 +1,13 @@
 #!env ruby
 
-# This is a single line comment
-
 class FileOutputer
-	def self.add(input)
+	def self.write(input)
 		File.open("./output.txt", "w+") do |file|
-      file.puts input
+      input.each do |car|
+        file.write "#{car.size} "
+        car.each { |ride_num| file.write "#{ride_num} " }
+        file.puts ""
+      end
 		end
 	end
 end
