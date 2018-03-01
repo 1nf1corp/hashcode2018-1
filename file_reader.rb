@@ -10,7 +10,7 @@ class FileReader
       if index > 0
         split_set = line.split(" ")
         length = (split_set[0].to_i - split_set[2].to_i) + (split_set[1].to_i - split_set[3].to_i)
-        input[:rides] << {id: index - 1, start_pos: {x: split_set[0].to_i, y: split_set[1].to_i}, 
+        input[:rides] << {id: index - 1, assigned: false, start_pos: {x: split_set[0].to_i, y: split_set[1].to_i}, 
         end_pos: {x: split_set[2].to_i, y: split_set[3].to_i}, 
         time: {start: split_set[4].to_i, finish: split_set[5].to_i, length: length.abs}}
 
