@@ -1,6 +1,6 @@
 class FileReader
   def self.process_input(filename)
-    file = File.open(filename])
+    file = File.open(filename)
 
     results = []
 
