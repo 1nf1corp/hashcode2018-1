@@ -15,4 +15,4 @@ input = FileReader.process_input(ARGV[0])
 
 results = Algorithm.perform(input)
 
-FileOutputer.output(results)
+FileOutputer.output(results, ARGV[0])
