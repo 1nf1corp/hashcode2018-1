@@ -3,7 +3,7 @@ class FileReader
     file = File.open(filename)
 
     input = {rows: nil, columns: nil, cars: nil, ride_count: nil, 
-      ride_bonus: nil, time: nil, rides: [], map: []}
+      ride_bonus: nil, time: nil, rides: []}
 
     index = 0
     file.each_line do |line|
@@ -13,19 +13,10 @@ class FileReader
         input[:rides] << {id: index - 1, assigned: false, start_pos: {x: split_set[0].to_i, y: split_set[1].to_i}, 
         end_pos: {x: split_set[2].to_i, y: split_set[3].to_i}, 
         time: {start: split_set[4].to_i, finish: split_set[5].to_i, length: length.abs}}
-
-        input[:map][split_set[0].to_i][split_set[1].to_i] << index - 1
       else
         split_set = line.split(" ")
         input[:rows] = split_set[0].to_i
         input[:columns] = split_set[1].to_i
-        input[:columns].times do
-          temp = []
-          input[:rows].times do 
-            temp << []
-          end
-          input[:map] << temp
-        end
         input[:cars] = []
         split_set[2].to_i.times{|i| input[:cars] << []}
         input[:ride_count] = split_set[3].to_i
@@ -35,8 +26,6 @@ class FileReader
 
       index +=1
     end
-    ap input
-    
     input
   end
 end
