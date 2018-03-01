@@ -6,3 +6,7 @@ if ARGV[0].nil? || ARGV[0].empty?
 end
 
 input = FileReader.process_input(ARGV[0])
+
+results = Algorithm.perform(input)
+
+FileOutputer.output(results)
