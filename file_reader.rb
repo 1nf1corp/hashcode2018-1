@@ -14,16 +14,18 @@ class FileReader
         time: {start: split_set[4], finish: split_set[5]}}
       else
         split_set = line.split(" ")
-        input[:rows] = split_set[0]
-        input[:columns] = split_set[1]
-        input[:cars] = split_set[2].map{|v| []}
-        input[:ride_count] = split_set[3]
-        input[:ride_bonus] = split_set[4]
-        input[:time] = split_set[5]
+        input[:rows] = split_set[0].to_i
+        input[:columns] = split_set[1].to_i
+        input[:cars] = []
+        split_set[2].to_i.times{|i| input[:cars] << []}
+        input[:ride_count] = split_set[3].to_i
+        input[:ride_bonus] = split_set[4].to_i
+        input[:time] = split_set[5].to_i
       end
 
       index +=1
     end
+    ap input
     
     input
   end
