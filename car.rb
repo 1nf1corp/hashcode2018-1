@@ -1,5 +1,5 @@
 class Car
-  def initialize
+  def initialize(id)
     @schedule = []
   end
 end

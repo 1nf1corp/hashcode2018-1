@@ -2,21 +2,24 @@ class FileReader
   def self.process_input(filename)
     file = File.open(filename)
 
-    input = {rows: nil, columns: nil, vehicles: nil, ride_count: nil, 
-      ride_bonus: nil, time: nil, cars: []}
+    input = {rows: nil, columns: nil, cars: nil, ride_count: nil, 
+      ride_bonus: nil, time: nil, rides: []}
 
     index = 0
     file.each_line do |line|
       if index > 0
-        input << line
+        split_set = line.split(" ")
+        input[:rides] << {start_pos: {x: split_set[0], y: split_set[1]}, 
+        end_pos: {x: split_set[2], y: split_set[3]}, 
+        time: {start: split_set[4], finish: split_set[5]}}
       else
-        line.each_char do |char|
-          unless char == "\n"
-            info.map[index - 1] << char
-            info.tomato_count += 1 if char == 'T'
-            info.mushroom_count += 1 if char == 'M'
-          end
-        end
+        split_set = line.split(" ")
+        input[:rows] = split_set[0]
+        input[:columns] = split_set[1]
+        input[:cars] = split_set[2].map{|v| []}
+        input[:ride_count] = split_set[3]
+        input[:ride_bonus] = split_set[4]
+        input[:time] = split_set[5]
       end
 
       index +=1
