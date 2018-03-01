@@ -15,4 +15,6 @@ input = FileReader.process_input(ARGV[0])
 
 results = Algorithm.perform(input)
 
-FileOutputer.output(results[:cars], ARGV[0])
+FileOutputer.write(results[:cars], ARGV[0])
+
+puts "Done with #{ARGV[0]}"

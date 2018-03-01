@@ -14,7 +14,10 @@ class Algorithm
 
         # FIND BEST RIDE
         input[:rides].each do |ride|
-          next if ride[:assigned] || ((ride[:time][:length] + current_time) > input[:time]
+          next if ride[:assigned] 
+          next if current_time > ride[:time][:finish]
+          next if (ride[:time][:length] + current_time + distance(car[:x], car[:y], ride[:start_pos][:x], ride[:start_pos][:y])) > ride[:time][:finish]
+          next if (ride[:time][:length] + current_time + distance(car[:x], car[:y], ride[:start_pos][:x], ride[:start_pos][:y])) > input[:time]
           worth = ride[:time][:length] + ((ride[:time][:start] - current_time) - distance(car[:x], car[:y], ride[:start_pos][:x], ride[:start_pos][:y])) >= 0 ? input[:ride_bonus] : 0
           if worth >= best_ride_weight
             best_ride_weight = worth

@@ -1,7 +1,7 @@
 #!env ruby
 
-`./main example.in`
-`./main b_should_be_easy.in`
-`./main c_no_hurry.in`
-`./main d_metropolis.in`
-`./main e_high_bonus.in`
+`ruby main.rb a_example.in`
+`ruby main.rb b_should_be_easy.in`
+`ruby main.rb c_no_hurry.in`
+`ruby main.rb d_metropolis.in`
+`ruby main.rb e_high_bonus.in`
